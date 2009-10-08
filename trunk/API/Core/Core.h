@@ -8,11 +8,15 @@
 #include "../SoundServer/SoundServer.h"
 #include "../GameplayServer/GameplayServer.h"
 
+#include "implementation/PluginLoader.h"
+
+#define LBAPI_VERSION 1
+
 namespace LBAPI {
 
-class LBAPI {
+class Core {
 public:
-	static LBAPI&		instance();
+	static Core&		instance() { return m_instance; }
 
 	void				loadPlugins(const std::string& pluginsPath = "./plugins");
 
@@ -22,14 +26,20 @@ public:
     GameplayServer&     getGameplayServer() { return m_GameplayServer; }
 
 private:
+	Core() {}
+
 	PackagingServer     m_PackagingServer;
 	GraphicsServer      m_GraphicsServer;
 	SoundServer         m_SoundServer;
 	GameplayServer      m_GameplayServer;
 
-	static LBAPI		m_instance;
+	static Core		m_instance;
+	PluginLoader	m_pluginLoader;
 };
 
 } // namespace LBAPI
+
+typedef int		(*GetLbapiVersionFct)();
+typedef void	(*RegisterLbapiPluginFct)(LBAPI::Core&);
 
 #endif // LBAPI_H
