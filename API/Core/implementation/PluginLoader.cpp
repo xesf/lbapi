@@ -25,7 +25,7 @@ void	PluginLoader::loadPlugins(Core& core, const std::string& pluginsPath)
 	std::list<std::string>::iterator it;
 	for (it = list.begin(); it != list.end(); ++it)
 	{
-		//std::cout << *it << std::endl;
+		std::cout << *it << std::endl;
 		loadPlugin(core, *it);
 	}
 }
@@ -35,17 +35,13 @@ void	PluginLoader::getPluginList(std::list<std::string>& list, const std::string
 #ifdef WIN32
 	WIN32_FIND_DATAA fdata;
 	HANDLE dhandle;
-	char buf[MAX_PATH];
 
-	GetFullPathNameA(pluginsPath.c_str(), MAX_PATH, buf, NULL);
-	std::string fullPath(buf);
-	fullPath += "\\*.dll";
-	//std::cout << "fullpath: " << fullPath << std::endl;
-	if ((dhandle = FindFirstFileA(fullPath.c_str(), &fdata)) != INVALID_HANDLE_VALUE)
+	std::string searchPath = pluginsPath + "\\*.dll";
+	if ((dhandle = FindFirstFileA(searchPath.c_str(), &fdata)) != INVALID_HANDLE_VALUE)
 	{
 		do
 		{
-			std::string file(buf);
+			std::string file(pluginsPath);
 			file += "\\";
 			file += fdata.cFileName;
 			list.push_back(file);
