@@ -5,16 +5,18 @@ QT -= core \
     gui
 TARGET = LBAPI
 TEMPLATE = lib
-CONFIG += staticlib
+CONFIG += dll
 SOURCES += PackagingServer/PackagingServer.cpp \
     GraphicsServer/GraphicsServer.cpp \
     SoundServer/SoundServer.cpp \
     GameplayServer/GameplayServer.cpp \
     Core/implementation/PluginLoader.cpp \
-    Core/Core.cpp
+    Core/Core.cpp \
+    Core/Logger.cpp
 HEADERS += PackagingServer/PackagingServer.h \
     GraphicsServer/GraphicsServer.h \
     SoundServer/SoundServer.h \
     GameplayServer/GameplayServer.h \
     Core/implementation/PluginLoader.h \
-    Core/Core.h
+    Core/Core.h \
+    Core/Logger.h

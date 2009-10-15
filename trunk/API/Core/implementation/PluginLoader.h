@@ -11,7 +11,7 @@
 #ifdef WIN32
 	typedef HMODULE PluginHandle;
 #else
-
+        typedef void*   PluginHandle;
 #endif
 
 namespace LBAPI {
@@ -25,7 +25,7 @@ public:
 	void	loadPlugins(Core& core, const std::string& pluginsPath);
 
 private:
-	void	getPluginList(std::list<std::string>& list, const std::string& pluginsPath);
+        void	getLibraryList(std::list<std::string>& list, const std::string& pluginsPath);
 	void	loadPlugin(Core& core, const std::string& file);
 
 	std::list<PluginHandle>		m_loadedPlugins;
