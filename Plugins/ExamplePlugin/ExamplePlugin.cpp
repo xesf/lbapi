@@ -2,6 +2,7 @@
 
 #include "ExamplePlugin_global.h"
 #include "../../API/Core/Core.h"
+#include "../../API/Core/Logger.h"
 
 extern "C" EXAMPLEPLUGIN_EXPORT int getLbapiVersion()
 {
@@ -10,7 +11,7 @@ extern "C" EXAMPLEPLUGIN_EXPORT int getLbapiVersion()
 
 extern "C" EXAMPLEPLUGIN_EXPORT void registerLbapiPlugin(LBAPI::Core& core)
 {
-	std::cout << "Registering plugin ExamplePlugin" << std::endl;
+        LBAPI::logger() << "Registering plugin ExamplePlugin" << std::endl;
 	// Register drivers
 	// ...
 	// ...

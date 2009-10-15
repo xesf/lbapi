@@ -7,3 +7,4 @@ TARGET = ExamplePlugin
 TEMPLATE = lib
 SOURCES += ExamplePlugin.cpp
 HEADERS += ExamplePlugin_global.h
+

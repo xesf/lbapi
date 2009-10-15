@@ -12,8 +12,10 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
-LIBS += -L../API/debug \
+LIBS += -L../API -L../API/debug \
 	-lLBAPI
+
+unix:LIBS += -ldl
 
 SOURCES += main.cpp
 
@@ -21,3 +23,4 @@ QMAKE_EXTRA_TARGETS += plugintarget
 POST_TARGETDEPS += .plugins
 plugintarget.target = .plugins
 win32:plugintarget.commands = CopyPlugins.bat
+unix:plugintarget.commands = ./CopyPlugins.sh
