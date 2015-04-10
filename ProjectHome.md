@@ -1,0 +1,1 @@
+Welcome to the LBAPI GoogleCode project. LBAPI (Little Big Application Programming Interface) is a way for LBA-fan programmers to make the development of fan-games, mods and modding tools faster and more powerful.
